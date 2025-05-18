@@ -1,0 +1,194 @@
+ /* body{
+    margin: 0%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: black;
+}
+.container{
+    font-size: 10px;
+    width: 40em;
+    height: 40em;
+    position: relative;
+}
+.sun{
+    position: absolute;
+    top: 15em;
+    left: 15em;
+    width: 10em;
+    height: 10em;
+    background-color: #ffea00;
+    border-radius: 50%;
+    box-shadow: 0 0 10em #fff;
+}
+.earth, .moon{
+    position: absolute;
+    border-style: solid;
+    border-color: #5b76ee transparent ;
+    border-width: 0.1em 0.1em 0 0;
+    border-radius: 50%;
+}
+.earth{
+    top: 5em;
+    left: 5em;
+    width: 30em;
+    height: 30em;
+    animation: orbit 36.5s linear infinite;
+}
+.moon{
+    top: 0;
+    left: 0;
+    width: 8em;
+    height: 8em;
+    animation: orbit 2.7s linear infinite;
+}
+.earth::before,
+.moon::before{
+    content:'';
+    position: absolute;
+    border-radius: 50%;
+}
+.earth::before{
+    top: 2.8em;
+    right: 2.8em;
+    width: 3em;
+    height: 3em;
+    background-color:#13f1f1;
+}
+.moon::before{
+    top: 0.8em;
+    right: 0.2em;
+    width:1.2em;
+    height: 1.2em;
+    background-color:#c0c0c0;
+}
+@keyframes orbit{
+    100%{
+        transform: rotate(360deg);
+    }
+}  */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 40em;
+      height: 40em;
+      font-size: 10px;
+    }
+
+    .sun {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10em;
+      height: 10em;
+      background: #ffea00;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10em white;
+     
+    }
+    
+    /* Earth orbiting the sun */
+    .earth-orbit {
+      position: absolute;
+      width: 30em;
+      height: 30em;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotate-earth 36.5s linear infinite;
+    }
+
+    .earth {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 3em;
+      height: 3em;
+      background: #13f1f1;
+      border-radius: 50%;
+      transform: translate(15em, -1.5em); /* Position Earth on the orbit path */
+      box-shadow:
+    -2em 0 2em rgba(19, 241, 241, 0.25),
+    -4em 0 3em rgba(19, 241, 241, 0.1);
+      
+    }
+
+    /* Moon orbiting the earth */
+    .moon-orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6em;
+      height: 6em;
+      transform: translate(-50%, -50%);
+      animation: rotate-moon 2.7s linear infinite;
+    }
+
+    .moon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 1.2em;
+      height: 1.2em;
+      background: #c0c0c0;
+      border-radius: 50%;
+      transform: translate(3em, -0.6em); /* Position Moon on the orbit path */
+         
+    }
+
+    /* Animations */
+    @keyframes rotate-earth {
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    @keyframes rotate-moon {
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+    .earth-orbit::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 0.1em solid #5b76ee;
+  box-sizing: border-box;
+  animation: trailSpin 36.5s linear infinite;
+  opacity: 0.5;
+}
+.moon-orbit::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 0.1em solid white;
+  box-sizing: border-box;
+  animation: trailSpin 2.7s linear infinite;
+  opacity: 0.1;
+  box-shadow:
+    -1em 0 1em rgba(255, 255, 255, 0.2),
+    -2em 0 2em rgba(44, 153, 231, 0.1);
+
+}
+@keyframes trailSpin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+    
